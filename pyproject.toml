@@ -1,0 +1,41 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "bpqmonmqtt"
+version = "0.0.1"
+authors = [
+  "Tom Wardill <tom@howrandom.net>"
+]
+description = "A utility for outputing BPQ via MQTT input"
+readme = "README.md"
+license = "MIT"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[tool.poetry.urls]
+Homepage = "https://github.com/packethacking/bpqmonmqtt"
+Issues = "https://github.com/packethacking/bpqmonmqtt/issues"
+
+[tool.poetry.scripts]
+bpqmon = "bpqmonmqtt.bpqmon:run_wrapper"
+
+[tool.poetry.dependencies]
+python = ">=3.11,<4.0.0"
+click = "^8.1.7"
+textual = "^0.79.0"
+structlog = "^24.4.0"
+paho-mqtt = "^2.1.0"
+rich = "^13.9.2"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.2"
+black = "^24.8.0"
+textual-dev = "^1.6.1"
+ruff = "^0.6.3"
+coverage = "^7.6.1"
+
