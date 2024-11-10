@@ -1,6 +1,9 @@
 FROM python:3.12
 
-ENV PYTHONUNBUFFERED=1
+ENV PYTHONUNBUFFERED=1 \
+    # prevents python creating .pyc files
+    PYTHONDONTWRITEBYTECODE=1 \
+    POETRY_VIRTUALENVS_IN_PROJECT=true
 
 # Set the working directory
 WORKDIR /app
@@ -9,6 +12,6 @@ WORKDIR /app
 COPY . /app
 
 RUN pip install poetry
-RUN poetry install
+RUN poetry install --no-dev
 
 CMD ["poetry", "run", "bpqmon"]
