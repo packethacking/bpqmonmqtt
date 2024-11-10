@@ -14,7 +14,7 @@ async def start(fancy_terminal, plain_terminal, mqtt_details):
     mqtt = MQTTInput(**mqtt_details)
     tasks.append(mqtt.run)
 
-    if plain_terminal:
+    if plain_terminal or (not fancy_terminal and not plain_terminal):
         plain = PlainTerminal(mqtt)
         tasks.append(plain.run)
 

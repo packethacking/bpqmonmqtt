@@ -27,6 +27,17 @@ poetry install
 poetry run bpqmon --mqtt-hostname localhost --mqtt-port 1833 --mqtt-username bpqmon --mqtt-password bpqmon
 ```
 
-There is also a docker image.
+### Docker
 
-TODO: Fill in docker details once it is available
+You can run this project via docker in foreground mode:
+
+```bash
+docker run --rm --name bpqmon -e BPQMON_MQTT_HOSTNAME=localhost -e BPQMON_MQTT_PORT=1883 -e BPQMON_MQTT_USERNAME=bpqmon -e BPQMON_MQTT_PASSWORD=bpqmon -it ghcr.io/packethacking/bpqmonmqtt:main
+```
+
+Or, you can start the service in the background and view the docker logs to view the output
+
+```bash
+docker run --rm --name bpqmon -e BPQMON_MQTT_HOSTNAME=radiostation -e BPQMON_MQTT_PORT=1883 -e BPQMON_MQTT_USERNAME=bpqmon -e BPQMON_MQTT_PASSWORD=bpqmon ghcr.io/packethacking/bpqmonmqtt:main
+docker logs -f bpqmon
+```
